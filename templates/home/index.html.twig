@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% if app.user %}
+        <p>Vous êtes connectés en tant que {{ app.user.userIdentifier }}</p>
+        <form id="generate-pdf-form" action="{{ path('app_generate_pdf_user', {id: app.user.id}) }}" method="GET">
+            <button type="submit">Générer un PDF</button>
+        </form>
+        <form id="generate-pdf-form" action="{{ path('app_mailer_sendemail') }}" method="POST">
+            <button type="submit">Envoyer un email</button>
+        </form>
+    {% endif %}
+{% endblock %}
